@@ -19,13 +19,29 @@ class firstapp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home:  Scaffold (
-        appBar: AppBar (
-          title: const  FrontPage(),
+      home: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(60.0),
+          child: AppBar(
+            leading: Image.asset('assets/images/download.jpeg',
+              width: 10,
+              height: 10,
+              fit: BoxFit.contain,
+    ), // Place your logo here
+            title: FrontPage(),
+            flexibleSpace: Container (
+              decoration: BoxDecoration (
+                gradient: LinearGradient (
+                  colors: [Colors.green.shade300, Colors.green.shade200],
+                  begin: Alignment.topCenter ,
+                  end: Alignment.bottomCenter ,
+                )
+              )
+            )
+          ),
         ),
-        body:  const bodyone(),
+        body: const bodyone(),
       ),
     );
   }
 }
-
