@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'slider.dart';
+
 class bodyone extends StatefulWidget {
   const bodyone({super.key});
 
@@ -14,8 +15,14 @@ class bodyoneState extends State<bodyone> {
       child: Stack(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height*2, // height of the page
-            width: MediaQuery.of(context).size.width,
+            height: MediaQuery
+                .of(context)
+                .size
+                .height * 2, // height of the page
+            width: MediaQuery
+                .of(context)
+                .size
+                .width,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
@@ -38,7 +45,10 @@ class bodyoneState extends State<bodyone> {
             top: 0,
             left: 0,
             child: Container(
-              width: MediaQuery.of(context).size.width,
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width,
               height: 50,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -54,11 +64,15 @@ class bodyoneState extends State<bodyone> {
               ),
             ),
           ),
+
           Positioned(
             top: 51,
             left: 0,
             child: Container(
-              width: MediaQuery.of(context).size.width,
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width,
               height: 150,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -76,7 +90,8 @@ class bodyoneState extends State<bodyone> {
           ),
           // slider
           const Positioned(
-            top: 250, // Adjust this to position the slider vertically in the middle
+            top: 250,
+            // Adjust this to position the slider vertically in the middle
             left: 0,
             right: 0,
             child: Center(
