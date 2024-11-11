@@ -23,12 +23,15 @@ class firstapp extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(60.0),
           child: AppBar(
-            leading: Image.asset('assets/images/download.jpeg',
-              width: 10,
-              height: 10,
-              fit: BoxFit.contain,
-    ), // Place your logo here
-            title: FrontPage(),
+            leading:  Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset('images/logo.jpeg',
+                width: 10,
+                height: 10,
+                fit: BoxFit.contain,
+                  ),
+            ), // Place your logo here
+            title: const FrontPage(),
             flexibleSpace: Container (
               decoration: BoxDecoration (
                 gradient: LinearGradient (

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'NewUserPage.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -10,8 +10,8 @@ class LoginPage extends StatefulWidget {
 class LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold (
-      body : Stack(
+    return Scaffold(
+      body: Stack(
         children: [
           SizedBox(
             width: double.infinity,
@@ -36,14 +36,14 @@ class LoginPageState extends State<LoginPage> {
           Positioned(
             top: 250,
             left: 450,
-            child: SizedBox (
+            child: SizedBox(
               height: 50,
               width: 400,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.0),
-                color: Colors.white,
-              ),
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20.0),
+                  color: Colors.white,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -55,13 +55,13 @@ class LoginPageState extends State<LoginPage> {
                         color: Colors.green.shade800,
                       ),
                     ),
-                    Expanded (
+                    Expanded(
                       child: TextField(
-                        decoration: InputDecoration (
+                        decoration: InputDecoration(
                           hintText: 'username or email ',
                           border: InputBorder.none,
                           hintStyle: TextStyle(
-                            fontSize: 20.0 , // adjust the font size of the hint
+                            fontSize: 20.0, // adjust the font size of the hint
                             fontWeight: FontWeight.normal,
                             color: Colors.green.shade800,
                           ),
@@ -77,7 +77,7 @@ class LoginPageState extends State<LoginPage> {
           Positioned(
             top: 350,
             left: 450,
-            child: SizedBox (
+            child: SizedBox(
               height: 50,
               width: 400,
               child: DecoratedBox(
@@ -90,21 +90,19 @@ class LoginPageState extends State<LoginPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const Padding(
-                      padding: EdgeInsets.all(5),
-                      child: Icon (
-                        Icons.visibility,
-                      )
-                    ),
-                    Expanded (
+                        padding: EdgeInsets.all(5),
+                        child: Icon(
+                          Icons.visibility,
+                        )),
+                    Expanded(
                       child: TextField(
-                        decoration: InputDecoration (
+                        decoration: InputDecoration(
                           hintText: 'password  ',
                           border: InputBorder.none,
                           hintStyle: TextStyle(
-                            fontSize: 20.0 , // adjust the font size of the hint
+                            fontSize: 20.0, // adjust the font size of the hint
                             fontWeight: FontWeight.normal,
                             color: Colors.green.shade800,
-
                           ),
                         ),
                       ),
@@ -115,11 +113,11 @@ class LoginPageState extends State<LoginPage> {
             ),
           ),
           // signup icon
-          Positioned (
-            top : 500,
-              left: 590,
-            child:  ElevatedButton (
-              onPressed: (){
+          Positioned(
+            top: 500,
+            left: 590,
+            child: ElevatedButton(
+              onPressed: () {
                 // write code here
               },
               child: Text('SingUp', style: TextStyle(color: Colors.white)),
@@ -134,7 +132,46 @@ class LoginPageState extends State<LoginPage> {
                 // Add elevation for a 3D effect
                 shadowColor: Colors.grey.withOpacity(0.5), // Add shadow
               ),
-
+            ),
+          ),
+          Positioned(// new user box
+            top: 100,
+            left: 860,
+            child: SizedBox(
+              height: 600,
+              width: 340,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20.0),
+                  color: Colors.green.shade200.withOpacity(0.5),
+                ),
+              ),
+            ),
+          ),
+          Positioned(// new user botton
+            top: 600,
+            left: 960,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder:(context) => newuserpage(),
+                  ),
+                );
+              },
+              child: Text('New User !', style: TextStyle(color: Colors.white)),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green.shade800,
+                // Custom color
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                elevation: 5,
+                // Add elevation for a 3D effect
+                shadowColor: Colors.grey.withOpacity(0.5), // Add shadow
+              ),
             ),
           ),
         ],
