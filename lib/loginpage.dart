@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'NewUserPage.dart';
+import 'newuserpage.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -117,10 +118,6 @@ class LoginPageState extends State<LoginPage> {
             top: 500,
             left: 590,
             child: ElevatedButton(
-              onPressed: () {
-                // write code here
-              },
-              child: Text('SingUp', style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green.shade800,
                 // Custom color
@@ -132,6 +129,10 @@ class LoginPageState extends State<LoginPage> {
                 // Add elevation for a 3D effect
                 shadowColor: Colors.grey.withOpacity(0.5), // Add shadow
               ),
+              onPressed: () {
+                // write code here
+              },
+              child: Text('SingUp', style: TextStyle(color: Colors.white)),
             ),
           ),
           Positioned(// new user box
@@ -152,15 +153,6 @@ class LoginPageState extends State<LoginPage> {
             top: 600,
             left: 960,
             child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder:(context) => newuserpage(),
-                  ),
-                );
-              },
-              child: Text('New User !', style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green.shade800,
                 // Custom color
@@ -172,6 +164,15 @@ class LoginPageState extends State<LoginPage> {
                 // Add elevation for a 3D effect
                 shadowColor: Colors.grey.withOpacity(0.5), // Add shadow
               ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder:(context) => NewUserPage(),
+                  ),
+                );
+              },
+              child: Text('New User !', style: TextStyle(color: Colors.white)),
             ),
           ),
         ],

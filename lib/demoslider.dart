@@ -12,6 +12,8 @@ class AdvertisementWidget extends StatelessWidget {
   final CarouselSliderController _carouselController = CarouselSliderController(); // CarouselController instance
   @override
   Widget build(BuildContext context) {
+    double screen_width =MediaQuery.of(context).size.width;
+    double screen_height =MediaQuery.of(context).size.height;
     return Stack(
       children: [
         CarouselSlider.builder(
@@ -19,8 +21,8 @@ class AdvertisementWidget extends StatelessWidget {
           itemCount: imgList.length,
           itemBuilder: (context, index, realIndex) {
             return Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
+              width: screen_width,
+              height:screen_height/2,
               margin: const EdgeInsets.symmetric(horizontal: 10.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(30),

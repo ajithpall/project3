@@ -14,3 +14,10 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+
+
+step 1 : I need to complete responsive design and full ui functions first 
+step 2 : I need to complete the backend task using a firebase 
+step 3 : I need to don my all things to the node.js and mysql 
