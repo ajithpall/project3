@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:app1/App_bar.dart';
 import 'package:app1/body.dart';
-import 'package:mysql1/mysql1.dart';
-import 'dart:io';
+//import 'dart:convert/convert.dart';
+//import 'package:mysql1/mysql1.dart';
+//import 'dart:io';
 //import 'package:firebase_core/firebase_core.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
 //import 'firebase_auth.dart';
@@ -19,7 +20,7 @@ void main()  async {
 // appId: "1:181252863513:web:9e96f33e177e62c5405c88"
 // )
 // );
-  runApp(const firstapp());
+  runApp( const firstapp());
   //dart database connection but fail this process
   // The mysql1 package relies on dart:io, which is
   // unavailable in Flutter for Web. Instead, Flutter
@@ -68,7 +69,7 @@ class firstapp extends StatelessWidget {
   const firstapp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)  {
     return MaterialApp(
       title: 'E-com',
       theme: ThemeData(
@@ -94,9 +95,9 @@ class firstapp extends StatelessWidget {
                   colors: [Colors.green.shade300, Colors.green.shade200],
                   begin: Alignment.topCenter ,
                   end: Alignment.bottomCenter ,
-                )
-              )
-            )
+                ),
+              ),
+            ),
           ),
         ),
         body: const bodyone(),
