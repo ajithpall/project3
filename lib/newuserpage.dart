@@ -323,6 +323,8 @@
 import 'package:flutter/material.dart'; // dart package
 import 'package:http/http.dart' as http; // http package for API calls
 import 'dart:convert'; // JSON data conversion
+import 'package:flutter/foundation.dart';
+//import 'dart:html';
 
 class NewUserPage extends StatefulWidget {
   const NewUserPage({super.key}); // pass the key to the superclass
@@ -353,22 +355,28 @@ class NewUserPageState extends State<NewUserPage> {
       'username': nameController.text,
       'password': passwordController.text,
       'emailOrPhone': emailOrPhoneController.text,
+      'profilePhoto': "", // Empty or null for now
+      'address': "", // Empty or null for now
     };
 
-    final jsonData = jsonEncode(data); // Encode data as JSON
+    final jsonData = json.encode(data); // Encode data as JSON
     print('Original Data: $data'); // Print original data
     print('JSON Data: $jsonData'); // Print JSON data
 
+
     try {
       // Send a POST request to the server
-      const String baseUrl = 'http://localhost:3001/'; // location of the running local server
+       const  String baseUrl = 'http:// 192.168.1.37/NewUserPage/registerUser'; // location of the running local server
       final response = await http.post(
         Uri.parse(baseUrl), // Send the request to the base URL
         headers: {'Content-Type': 'application/json'}, // Set request headers
         body: jsonData, // Send the JSON data as the request body
       );
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+    print(baseUrl);
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         // Success: Show a success message
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Registration successful')),
@@ -383,117 +391,120 @@ class NewUserPageState extends State<NewUserPage> {
     } catch (e) {
       // Error handling
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e')),
+        SnackBar(content: Text('arumaida: $e')),
       );
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          // Background image
-          Image.asset(
-            'images/signuppage.png',
-            fit: BoxFit.cover,
-            width: double.infinity,
-            height: double.infinity,
-          ),
-          // Centered container with a transparent green background
-          Center(
-            child: Container(
-              width: 600, // Set the width of the container
-              height: 600, // Set the height of the container
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.0), // Rounded corners
-                color: Colors.green.shade200.withOpacity(0.8), // Semi-transparent green background
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center, // Center content vertically
-                children: [
-                  // Name TextField
-                  TextField(
-                    controller: nameController, // Controller for the name field
-                    decoration: InputDecoration(
-                      hintText: 'Full Name', // Placeholder text
-                      filled: true, // Fill background color
-                      fillColor: Colors.white, // White background
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10), // Rounded corners for the border
+    return //MaterialApp(
+      //home:
+  Scaffold(
+        body: Stack(
+          children: [
+            // Background image
+            Image.asset(
+              'images/signuppage.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+              height: double.infinity,
+            ),
+            // Centered container with a transparent green background
+            Center(
+              child: Container(
+                width: 600, // Set the width of the container
+                height: 600, // Set the height of the container
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20.0), // Rounded corners
+                  color: Colors.green.shade200.withOpacity(0.8), // Semi-transparent green background
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center, // Center content vertically
+                  children: [
+                    // Name TextField
+                    TextField(
+                      controller: nameController, // Controller for the name field
+                      decoration: InputDecoration(
+                        hintText: 'Full Name', // Placeholder text
+                        filled: true, // Fill background color
+                        fillColor: Colors.white, // White background
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10), // Rounded corners for the border
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 20), // Spacing between fields
+                    const SizedBox(height: 20), // Spacing between fields
 
-                  // Email/Phone TextField
-                  TextField(
-                    controller: emailOrPhoneController, // Controller for the email/phone field
-                    decoration: InputDecoration(
-                      hintText: 'Email or Phone', // Placeholder text
-                      filled: true, // Fill background color
-                      fillColor: Colors.white, // White background
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10), // Rounded corners for the border
+                    // Email/Phone TextField
+                    TextField(
+                      controller: emailOrPhoneController, // Controller for the email/phone field
+                      decoration: InputDecoration(
+                        hintText: 'Email or Phone', // Placeholder text
+                        filled: true, // Fill background color
+                        fillColor: Colors.white, // White background
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10), // Rounded corners for the border
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 20), // Spacing between fields
+                    const SizedBox(height: 20), // Spacing between fields
 
-                  // Password TextField
-                  TextField(
-                    controller: passwordController, // Controller for the password field
-                    obscureText: true, // Hide the password
-                    decoration: InputDecoration(
-                      hintText: 'Password', // Placeholder text
-                      filled: true, // Fill background color
-                      fillColor: Colors.white, // White background
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10), // Rounded corners for the border
+                    // Password TextField
+                    TextField(
+                      controller: passwordController, // Controller for the password field
+                      obscureText: true, // Hide the password
+                      decoration: InputDecoration(
+                        hintText: 'Password', // Placeholder text
+                        filled: true, // Fill background color
+                        fillColor: Colors.white, // White background
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10), // Rounded corners for the border
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 20), // Spacing between fields
+                    const SizedBox(height: 20), // Spacing between fields
 
-                  // Confirm Password TextField
-                  TextField(
-                    controller: confirmPasswordController, // Controller for the confirm password field
-                    obscureText: true, // Hide the password
-                    decoration: InputDecoration(
-                      hintText: 'Confirm Password', // Placeholder text
-                      filled: true, // Fill background color
-                      fillColor: Colors.white, // White background
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10), // Rounded corners for the border
+                    // Confirm Password TextField
+                    TextField(
+                      controller: confirmPasswordController, // Controller for the confirm password field
+                      obscureText: true, // Hide the password
+                      decoration: InputDecoration(
+                        hintText: 'Confirm Password', // Placeholder text
+                        filled: true, // Fill background color
+                        fillColor: Colors.white, // White background
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10), // Rounded corners for the border
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 30), // Spacing between fields
+                    const SizedBox(height: 30), // Spacing between fields
 
-                  // Register Button
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green.shade800, // Button color
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25), // Rounded corners
+                    // Register Button
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green.shade800, // Button color
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25), // Rounded corners
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 40, // Horizontal padding
+                          vertical: 15, // Vertical padding
+                        ),
                       ),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 40, // Horizontal padding
-                        vertical: 15, // Vertical padding
+                      onPressed: registerUser, // Call the registration function
+                      child: const Text(
+                        'Register', // Button text
+                        style: TextStyle(color: Colors.white), // Text color
                       ),
                     ),
-                    onPressed: registerUser, // Call the registration function
-                    child: const Text(
-                      'Register', // Button text
-                      style: TextStyle(color: Colors.white), // Text color
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
-      ),
+          ],
+        ),
+      //),
     );
   }
 }

@@ -5,6 +5,7 @@ const bodyParser = require('body-parser'); // import body-parser for parsing JSO
 const dotenv = require('dotenv'); // import dotenv for environment variables
 const cors = require('cors'); // import cors for cross-origin resource sharing
 
+
 dotenv.config(); // load environment variables from a .env file
 
 const app = express(); // create an instance of the express app
@@ -50,13 +51,13 @@ async function setupDatabase() {
     await db.query(createTableQuery); // execute the query to create the table
     console.log('Table created or already exists'); // log table creation success
 
-    const hashedPassword = await bcrypt.hash('demoPassword', 10); // hash the demo password
-    const insertDemoDataQuery = `
-      INSERT IGNORE INTO user (username, password, emailOrPhone, profilePhoto, address)
-      VALUES ('demoUser', ?, 'demoEmailOrPhone', NULL, NULL)
-    `;
-    await db.query(insertDemoDataQuery, [hashedPassword]); // insert demo data with hashed password
-    console.log('Demo data inserted successfully'); // log successful data insertion
+//    const hashedPassword = await bcrypt.hash('demoPassword', 10); // hash the demo password
+//    const insertDemoDataQuery = `
+//      INSERT IGNORE INTO user (username, password, emailOrPhone, profilePhoto, address)
+//      VALUES ('demoUser', ?, 'demoEmailOrPhone', NULL, NULL)
+//    `;
+//    await db.query(insertDemoDataQuery, [hashedPassword]); // insert demo data with hashed password
+//    console.log('Demo data inserted successfully'); // log successful data insertion
 
   } catch (err) {
     console.error('Error setting up the database:', err); // log any error in setting up the database
@@ -67,14 +68,14 @@ async function setupDatabase() {
 connectToDatabase();
 
 // Simple endpoint to check server status
-app.get('/', (req, res) => {
+app.get('/registerUser', (req, res) => {
   res.send('Server is running'); // respond with a simple message
 });
 
 // Register Endpoint
-app.post('/', async (req, res) => {
+app.post('/registerUser'), async (req, res) => {
   const { username, emailOrPhone, password } = req.body; // destructure data from request body
-
+// try to check
   try {
     // Check if username or email already exists
     const [results] = await db.query('SELECT * FROM user WHERE username = ? OR emailOrPhone = ?', [username, emailOrPhone]);
@@ -96,10 +97,10 @@ app.post('/', async (req, res) => {
     console.error('Error registering user:', err); // log any error during registration
     res.status(500).json({ message: 'Error registering user' }); // respond with internal server error status
   }
-});
+};
 
 // Endpoint to get registered users
-app.get('/users', async (req, res) => {
+app.get('/', async (req, res) => {
   try {
     const [rows] = await db.query('SELECT ID, username, emailOrPhone, profilePhoto, address, created_at FROM user');
     res.status(200).json(rows); // respond with the list of users

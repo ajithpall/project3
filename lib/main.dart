@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app1/App_bar.dart';
 import 'package:app1/body.dart';
+//import 'newuserpage.dart';
 //import 'dart:convert/convert.dart';
 //import 'package:mysql1/mysql1.dart';
 //import 'dart:io';
@@ -20,7 +21,12 @@ void main()  async {
 // appId: "1:181252863513:web:9e96f33e177e62c5405c88"
 // )
 // );
-  runApp( const firstapp());
+  runApp( const
+ firstapp()
+ // NewUserPage()
+
+  );// first app
+
   //dart database connection but fail this process
   // The mysql1 package relies on dart:io, which is
   // unavailable in Flutter for Web. Instead, Flutter
