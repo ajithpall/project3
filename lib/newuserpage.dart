@@ -330,7 +330,7 @@ class NewUserPage extends StatefulWidget {
   const NewUserPage({super.key}); // pass the key to the superclass
 
   @override // override the createState method
-  NewUserPageState createState() => NewUserPageState(); // create state for stateful widget
+  State<NewUserPage> createState() => NewUserPageState(); // create state for stateful widget
 }
 
 class NewUserPageState extends State<NewUserPage> {
