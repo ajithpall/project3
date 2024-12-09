@@ -1,33 +1,14 @@
 class UserData {
-  String? username;
-  String? password;
-  String? confirmPassword;
-  String? emailOrPhone;
+  static String username = '';
+  static String password = '';
+  static String confirmPassword = '';
+  static String emailOrPhone = '';
 
-  UserData({
-    this.username,
-    this.password,
-    this.confirmPassword,
-    this.emailOrPhone,
-  });
-
-  // Create UserData from a map
-  factory UserData.fromMap(Map<String, String> map) {
-    return UserData(
-      username: map['username'],
-      password: map['password'],
-      confirmPassword: map['confirmpassword'],
-      emailOrPhone: map['emailOrPhone'],
-    );
-  }
-
-  // Convert UserData to a map
-  Map<String, String> toMap() {
-    return {
-      'username': username ?? '',
-      'password': password ?? '',
-      'confirmpassword': confirmPassword ?? '',
-      'emailOrPhone': emailOrPhone ?? '',
-    };
+  // Method to populate fields from a Map
+  static void fromMap(Map<String, String> data) {
+    username = data['username'] ?? '';
+    password = data['password'] ?? '';
+    confirmPassword = data['confirmpassword'] ?? '';
+    emailOrPhone = data['emailOrPhone'] ?? '';
   }
 }
