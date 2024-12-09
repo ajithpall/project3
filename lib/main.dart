@@ -62,7 +62,7 @@ class firstapp extends StatelessWidget {
             ),
           ),
         ),
-        body: const bodyone(),
+        body: const BodyOne(),
       ),
     );
   }
